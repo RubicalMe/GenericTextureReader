@@ -45,13 +45,13 @@ public class TextureConverterEditorWindow : EditorWindow
 		currentPreset = PresetFileLoader.LoadPreset (availablePresets [0]);
 //		Debug.Log (availablePresets [0]);
 
-		Undo.undoRedoPerformed += OnUndoRedo;
+//		Undo.undoRedoPerformed += OnUndoRedo;
 	}
 
 	private void OnDisable ()
 	{
 		PresetFileLoader.SavePreset (currentPreset);
-		Undo.undoRedoPerformed -= OnUndoRedo;
+//		Undo.undoRedoPerformed -= OnUndoRedo;
 	}
 
 	private void OnGUI ()
@@ -216,22 +216,22 @@ public class TextureConverterEditorWindow : EditorWindow
 		int iOffset = 0;
 		for (int i = 0; i < mParameters.Length; i++) {
 			if (mParameters [i].ParameterType == typeof(UnityEngine.Vector2)) {
-				Undo.RecordObject (currentPreset, "TextureConvereter Preset Change");
+//				Undo.RecordObject (currentPreset, "TextureConvereter Preset Change");
 				currentPreset.chosenMethodsParameters [method] [i + iOffset] = TextureConverterDrawUtility.DrawParameterInput (typeof(PositionOrValue), currentPreset.chosenMethodsParameters [method] [i + iOffset]);
 				if ((PositionOrValue)currentPreset.chosenMethodsParameters [method] [i + iOffset] == PositionOrValue.UseValue) {
-					Undo.RecordObject (currentPreset, "TextureConvereter Preset Change");
+//					Undo.RecordObject (currentPreset, "TextureConvereter Preset Change");
 					currentPreset.chosenMethodsParameters [method] [i + iOffset + 1] = TextureConverterDrawUtility.DrawParameterInput (mParameters [i].ParameterType, currentPreset.chosenMethodsParameters [method] [i + iOffset + 1]);
 				}
 				iOffset++;
 			} else {
-				Undo.RecordObject (currentPreset, "TextureConvereter Preset Change");
+//				Undo.RecordObject (currentPreset, "TextureConvereter Preset Change");
 				currentPreset.chosenMethodsParameters [method] [i + iOffset] = TextureConverterDrawUtility.DrawParameterInput (mParameters [i].ParameterType, currentPreset.chosenMethodsParameters [method] [i + iOffset]);
 			}
 		}
 	}
 
-	private void OnUndoRedo ()
-	{
-		Repaint ();
-	}
+	//	private void OnUndoRedo ()
+	//	{
+	//		Repaint ();
+	//	}
 }
