@@ -8,6 +8,7 @@ using System.Reflection;
 using System;
 using System.IO;
 
+
 public static class TextureConverter
 {
 	public static void RedefineConversionMethodsInPreset (this TextureConverterPreset currentPreset, List<MethodInfo> conversionMethods)
